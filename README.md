@@ -15,7 +15,7 @@ Docker, Kubernetes, and GitHub Actions CI/CD.
 
 ## Project Status
 - [x] Phase 1 — Project Setup
-- [ ] Phase 2 — FastAPI Basics
+- [x] Phase 2 — FastAPI Basics
 - [ ] Phase 3 — Database Integration
 - [ ] Phase 4 — Authentication
 - [ ] Phase 5 — Task APIs
