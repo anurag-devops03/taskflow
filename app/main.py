@@ -17,6 +17,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.on_event("startup")
+async def startup_event():
+    print("✅ TaskFlow API started successfully")
+    print("✅ Database connection configured")
+
 @app.get("/health", tags=["Health"])
 def health_check():
     return {
