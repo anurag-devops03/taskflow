@@ -28,4 +28,32 @@ Docker, Kubernetes, and GitHub Actions CI/CD.
 - [ ] Phase 12 — AWS EC2
 
 ## Quick Start
-_Instructions will be added as we build each phase._
+
+### Prerequisites
+- Python 3.10+
+- Git
+
+### Run Locally
+
+```bash
+# Clone the repository
+git clone https://github.com/anurag-devops03/taskflow.git
+cd taskflow
+
+# Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Start the application
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+### API Endpoints
+
+| Method | Endpoint  | Description       |
+|--------|-----------|-------------------|
+| GET    | /         | Root welcome page |
+| GET    | /health   | Health check      |
+| GET    | /docs     | Swagger UI        |
