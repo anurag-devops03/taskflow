@@ -19,7 +19,7 @@ Docker, Kubernetes, and GitHub Actions CI/CD.
 - [x] Phase 3 — Database Integration
 - [x] Phase 4 — Authentication
 - [x] Phase 5 — Task APIs
-- [ ] Phase 6 — Docker
+- [x] Phase 6 — Docker
 - [ ] Phase 7 — Docker Hub
 - [ ] Phase 8 — Kubernetes
 - [ ] Phase 9 — CI/CD
@@ -57,3 +57,14 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 | GET    | /         | Root welcome page |
 | GET    | /health   | Health check      |
 | GET    | /docs     | Swagger UI        |
+
+### Run with Docker
+```bash
+# Build and start everything
+docker compose up --build
+
+# Run migrations
+docker exec taskflow-app alembic upgrade head
+
+# API is now live at http://localhost:8000
+```
