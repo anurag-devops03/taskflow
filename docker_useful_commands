@@ -1,0 +1,17 @@
+# View running containers
+docker ps
+
+# View logs of app container
+docker logs taskflow-app -f
+
+# View logs of postgres container
+docker logs taskflow-postgres -f
+
+# Stop everything
+docker compose down
+
+# Stop and remove volumes (wipes DB data)
+docker compose down -v
+
+# Rebuild after code changes
+docker compose up --build
