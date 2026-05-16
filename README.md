@@ -68,3 +68,11 @@ docker exec taskflow-app alembic upgrade head
 
 # API is now live at http://localhost:8000
 ```
+
+## Docker Hub
+
+Image: `anuragdevops03/taskflow:latest`
+
+```bash
+docker pull anuragdevops03/taskflow:latest
+```
