@@ -20,7 +20,7 @@ Docker, Kubernetes, and GitHub Actions CI/CD.
 - [x] Phase 4 — Authentication
 - [x] Phase 5 — Task APIs
 - [x] Phase 6 — Docker
-- [ ] Phase 7 — Docker Hub
+- [x] Phase 7 — Docker Hub
 - [ ] Phase 8 — Kubernetes
 - [ ] Phase 9 — CI/CD
 - [ ] Phase 10 — Monitoring
