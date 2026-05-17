@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taskflow-app
+  namespace: default
+  labels:
+    app: taskflow-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: taskflow-app
+  template:
+    metadata:
+      labels:
+        app: taskflow-app
+    spec:
+      containers:
+        - name: taskflow-app
+          image: anuragdevops03/taskflow:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          env:
+            - name: APP_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: taskflow-config
+                  key: APP_ENV
+            - name: JWT_ALGORITHM
+              valueFrom:
+                configMapKeyRef:
+                  name: taskflow-config
+                  key: JWT_ALGORITHM
+            - name: JWT_EXPIRE_MINUTES
+              valueFrom:
+                configMapKeyRef:
+                  name: taskflow-config
+                  key: JWT_EXPIRE_MINUTES
+            - name: DATABASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: taskflow-config
+                  key: DATABASE_URL
+            - name: SYNC_DATABASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: taskflow-config
+                  key: SYNC_DATABASE_URL
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: taskflow-secret
+                  key: SECRET_KEY
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: taskflow-secret
+                  key: JWT_SECRET_KEY
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 5
